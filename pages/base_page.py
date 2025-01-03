@@ -39,6 +39,6 @@ class BasePage:
 
     @allure.step('Проверка отображения элемента')
     def elem_is_display(self, element: tuple) -> None:
-        assert self.find_element(*element).is_displayed(), ('[FAILED]:элемент не отображается')
+        assert self.find_element(*element).is_displayed(), ('[FAILED]:элемент не отображается ')
 
 
