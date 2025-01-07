@@ -43,3 +43,8 @@ class ProgressbarPage(BasePage):
     @allure.step('Получение значения прогресса')
     def get_progress(self) -> str:
         return self.get_text(self.progressbar)
+
+    @allure.step('Ожидание прогресса')
+    def wait_for_progress(self, percent: str) -> None:
+        while self.get_progress() < f'{percent}%':
+            self.get_progress()
