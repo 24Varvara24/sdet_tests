@@ -7,7 +7,6 @@ class NonBreakingSpacePage(BasePage):
     def __init__(self, driver):
         super().__init__(driver, timeout=60)
 
-        # button=(By.XPATH,"//button[text()[contains(.,'My')] and text()[contains(.,'Button')]]")
         self.button = (By.XPATH, "//button[text()='My\u00A0Button']")
 
         self.url = 'http://uitestingplayground.com/nbsp'

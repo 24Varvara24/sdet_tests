@@ -48,3 +48,11 @@ class ProgressbarPage(BasePage):
     def wait_for_progress(self, percent: str) -> None:
         while self.get_progress() < f'{percent}%':
             self.get_progress()
+
+    @allure.step('проверка значения Result')
+    def check_result_value(self, req_value: str) -> None:
+        assert self.get_result() < req_value, (f'[FAILED]:Result >= {req_value} ')
+
+    @allure.step('проверка значения Duration')
+    def check_duration_value(self, req_value: str) -> None:
+        assert self.get_duration() < req_value, (f'[FAILED]:Duration >= {req_value} ')

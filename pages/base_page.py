@@ -22,10 +22,8 @@ class BasePage:
                                message=f'Элементы {by, value} не найдены')
 
     @allure.step('Переход по юрлу')
-    def move_url(self,url:str) -> str:
+    def move_url(self, url: str) -> str:
         self.driver.get(url)
-
-
 
     def get_text(self, element: tuple) -> str:
         return self.find_element(*element).text
@@ -40,5 +38,3 @@ class BasePage:
     @allure.step('Проверка отображения элемента')
     def elem_is_display(self, element: tuple) -> None:
         assert self.find_element(*element).is_displayed(), ('[FAILED]:элемент не отображается ')
-
-

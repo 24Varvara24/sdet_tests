@@ -18,8 +18,8 @@ class Tests:
         Нажать на кнопку старт
         ожидание, пока  прогресс не станет равен 75%
         нажать кнопку Stop
-        проверка значения Result (должно быть меньше 5)
-        проверка значения Duration (должно быть меньше 17 000)
+        проверить значение Result (должно быть меньше 5)
+        проверить значение Duration (должно быть меньше 17 000)
         ''')
     def test_progressbar(self, driver) -> None:
         progressbar_page = ProgressbarPage(driver)
@@ -31,8 +31,8 @@ class Tests:
 
         progressbar_page.click_stop_btn()
 
-        assert progressbar_page.get_result() < "5", ('[FAILED]:Result >= 5 ')
-        assert progressbar_page.get_duration() < '17000', ('[FAILED]:Duration >= 17000 ')
+        progressbar_page.check_result_value('5')
+        progressbar_page.check_duration_value('17000')
 
     @allure.title('Тест 2: отображение кнопки на странице Load Delay')
     @allure.description(
@@ -72,13 +72,12 @@ class Tests:
         '''
         Шаги теста:
         1)Перейти на страницу Dynamic Table
-        2)Получить и сравнить CPU из таблицы и строки
+        2)Cравнить CPU из таблицы и строки
         ''')
     def test_dynamic_table(self, driver) -> None:
         dynamic_table = DynamicTablePage(driver)
         dynamic_table.move_to_dynamictable()
-        assert dynamic_table.get_cpu_from_yellow_line() == dynamic_table.get_cpu_from_table(), (
-            '[FAILED]: значение из таблицы не равно значению в выделенной желтым строке ')
+        dynamic_table.compare_values_cpu()
 
     @allure.title('Тест 5: проверка отображения кнопки My Button ')
     @allure.description(

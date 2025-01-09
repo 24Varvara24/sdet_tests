@@ -27,3 +27,8 @@ class DynamicTablePage(BasePage):
     @allure.step('Получить значение CPU из желтой линии')
     def get_cpu_from_table(self) -> str:
         return self.get_text(self.cpu_from_table)
+
+    @allure.step('Cравнение CPU из таблицы и строки')
+    def compare_values_cpu(self) -> None:
+        assert self.get_cpu_from_yellow_line() == self.get_cpu_from_table(), (
+            '[FAILED]: значение из таблицы не равно значению в выделенной желтым строке ')

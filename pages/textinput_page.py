@@ -29,5 +29,6 @@ class TextInputPage(BasePage):
     def click_btn(self) -> None:
         self.click(self.btn_name)
 
+    @allure.step('Сравнение старого названия и нового названия кнопки')
     def compare_btn_names(self, old_mane, new_name) -> None:
         assert old_mane != new_name, ('[FAILED]:Название кнопки не поменялось!')
